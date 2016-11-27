@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+dirs=(
+  src(N-/)
+)
+
+ctags \
+  -R \
+  -f .tags \
+  --tag-relative=no \
+  --exclude=log \
+  $dirs

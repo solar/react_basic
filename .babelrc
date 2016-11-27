@@ -1,0 +1,55 @@
+{
+  "presets": [
+    [
+      "latest",
+      {
+        "es2015": {
+          "modules": false
+        }
+      }
+    ],
+    "react",
+    "stage-0",
+    "stage-1",
+  ],
+  "plugins": [
+    ["module-resolver", {
+      "root": ["./src"],
+      "alias": {
+        "test": "./test",
+      },
+      "extensions": [".js", ".jsx"],
+    }]
+  ],
+  "env": {
+    "production": {
+      "only": [
+        "src"
+      ],
+      "plugins": [
+        "transform-react-remove-prop-types",
+        "transform-react-constant-elements",
+        "transform-react-inline-elements"
+      ]
+    },
+    "development": {
+      "plugins": [
+      ],
+    },
+    "test": {
+      "presets": [
+        "latest",
+        "react",
+        "stage-0",
+      ],
+      "plugins": [
+        "transform-runtime",
+
+        ["transform-define", {
+          "process.env.NODE_ENV": "test",
+          "API_BASE_URL": "http://127.0.0.1:9000/api/1.0/",
+        }],
+      ],
+    }
+  }
+}
